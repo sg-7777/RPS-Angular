@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Element } from '../element';
+import { gameelement } from '../game-element';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-game-page',
@@ -8,13 +9,19 @@ import { Element } from '../element';
 })
 export class GamePageComponent {
 
-  elements: Element[] = [
+  elements: gameelement[] = [
     {id: 1, name: 'Rock'},
     {id: 2, name: 'Paper'},
     {id: 3, name: 'Scissor'}
   ];
 
-  onSelect(id: number): void{
-    console.log(id);
+  constructor(private restService: RestService){}
+
+  onSelect(): void{
+    this.restService.getHello().subscribe((data: gameelement) => {
+      console.log(data.id + " " + data.name);
+
+
+    });
   }
 }

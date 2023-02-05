@@ -1,4 +1,4 @@
-export interface Element{
+export interface gameelement{
     id: number,
     name: string
 }
