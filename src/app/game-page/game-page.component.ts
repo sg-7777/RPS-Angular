@@ -10,18 +10,14 @@ import { RestService } from '../rest.service';
 export class GamePageComponent {
 
   elements: gameelement[] = [
-    {id: 1, name: 'Rock'},
-    {id: 2, name: 'Paper'},
-    {id: 3, name: 'Scissor'}
+    {id: 1, name: 'rock'},
+    {id: 2, name: 'paper'},
+    {id: 3, name: 'scissors'}
   ];
 
   constructor(private restService: RestService){}
 
-  onSelect(): void{
-    this.restService.getHello().subscribe((data: gameelement) => {
-      console.log(data.id + " " + data.name);
-
-
-    });
+  onSelect(id: number): void{
+      console.log(id);
   }
 }

@@ -1,5 +1,17 @@
-<h2>
-    <p *ngFor="let element of elements">
-        <button (click)="onSelect()">{{element.name}}</button>
-    </p>
-</h2>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">
+                Choose
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div *ngFor="let element of elements" class="col">
+            <img (click)="onSelect(element.id)" src="/assets/{{element.name}}.png" alt="rock" class="img-fluid">
+        </div>
+    </div>
+</div>
