@@ -5,6 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css']
 })
-export class LandingPageComponent {
 
+export class LandingPageComponent {
+  name: string = "";
+
+  onClick(){
+    console.log(this.name);
+  }
 }

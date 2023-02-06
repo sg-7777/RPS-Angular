@@ -9,12 +9,19 @@ import { gameelement } from './game-element';
 })
 export class RestService {
 
-  private backendUrl =  "http://localhost:8080/api/hello"
+  private api =  "http://localhost:8080/"
 
   constructor(private http: HttpClient) { }
 
   getHello(): Observable<number>{
+    var path: string = "rest/hello";
     return this.http
-      .get<number>(this.backendUrl);
+      .get<number>(this.api + path);
+  }
+
+  postChoice(id: number): Observable<number>{
+    var path: string = "rest/playerchoice";
+    return this.http
+      .post<number>(this.api + path, JSON.stringify(id));
   }
 }

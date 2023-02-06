@@ -17,10 +17,18 @@ export class GamePageComponent {
 
   constructor(private restService: RestService){}
 
-  onSelect(): void{
-      this.restService.getHello().subscribe((data: number) => {
+  onSelect(id: number): void{
+    console.log(id)
+      this.restService.postChoice(id).subscribe((data: number) => {
         console.log(data);
         
       });
   }
+
+ // onSelect(): void{
+  //  this.restService.getHello().subscribe((data: number) => {
+  //    console.log(data);
+  //    
+  //  });
+//}
 }

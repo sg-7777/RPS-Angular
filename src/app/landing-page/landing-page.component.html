@@ -1,4 +1,26 @@
 <div class="container-fluid">
+    <form>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <input type="text" [(ngModel)]="name" class="form-control" placeholder="Player Name" required>
+            </div>
+            <div class="col-9"></div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">
+                <button (click)="onClick()">KLICK</button>
+            </h1>
+        </div>
+    </div>  
+</div>
+
+<div class="container-fluid">
     <div class="row">
         <div class="col">
             <h1 class="text-center">
@@ -7,4 +29,3 @@
         </div>
     </div>  
 </div>
-
