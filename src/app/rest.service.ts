@@ -13,7 +13,8 @@ export class RestService {
 
   constructor(private http: HttpClient) { }
 
-  getHello(): Observable<gameelement>{
-    return this.http.get<gameelement>(`${this.backendUrl}`);
+  getHello(): Observable<number>{
+    return this.http
+      .get<number>(this.backendUrl);
   }
 }
