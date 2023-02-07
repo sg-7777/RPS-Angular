@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedDataService } from '../shared-data.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,9 +8,11 @@ import { Component } from '@angular/core';
 })
 
 export class LandingPageComponent {
-  name: string = '';
+  playername: string = '';
+
+  constructor(private shareddata: SharedDataService){}
 
   onClick(){
-    console.log(this.name);
+    this.shareddata.createNameObservable(this.playername);
   }
 }

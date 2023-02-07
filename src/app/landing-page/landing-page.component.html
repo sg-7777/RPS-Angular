@@ -1,23 +1,37 @@
-<div class="container-fluid">
+<div class="container-fluid customText">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">
+                Rock Paper Scissors
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid customInput">
     <form>
         <div class="row">
             <div class="col-3"></div>
                 <div class="col-6">
-                    <input type="text" [(ngModel)]="name" name="name" class="form-control" placeholder="Insert Player Name" required>
+                    <input type="text" [(ngModel)]="playername" name="name" class="form-control" placeholder="Insert Player Name" required>
                 </div>
             <div class="col-9"></div>
         </div>
     </form>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid customBtn">
     <div class="row">
         <div class="col">
             <h1 class="text-center">
-                <a routerLink="/game" routerLinkActive="active">Rock Paper Scissor Game</a>
+                <button routerLink="/game" 
+                    routerLinkActive="active" 
+                    (click)=onClick() type="button" 
+                    [disabled]="!playername"
+                    class="btn btn-danger btn-lg">
+                    Start Game!
+                </button>
             </h1>
         </div>
     </div>  
 </div>
-
-<app-game-page [playername]="name"></app-game-page>
