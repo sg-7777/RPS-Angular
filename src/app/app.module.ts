@@ -9,13 +9,15 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ScoreboardComponent } from './game-page/scoreboard/scoreboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GamePageComponent,
     LandingPageComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    ScoreboardComponent
   ],
   imports: [
     BrowserModule,
