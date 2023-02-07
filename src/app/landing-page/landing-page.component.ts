@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 
 export class LandingPageComponent {
-  name: string = "";
+  name: string = '';
 
   onClick(){
     console.log(this.name);

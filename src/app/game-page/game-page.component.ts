@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PlayerDTO } from '../player-dto';
 import { RestService } from '../rest.service';
 import { MatchDTO } from '../match-dto';
@@ -10,6 +10,8 @@ import { MatchDTO } from '../match-dto';
 })
 export class GamePageComponent {
 
+  @Input() playername: string = '';
+  
   elements = [
     {hand: 'ROCK'},
     {hand: 'PAPER'},

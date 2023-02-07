@@ -8,12 +8,14 @@ import { GamePageComponent } from './game-page/game-page.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GamePageComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
