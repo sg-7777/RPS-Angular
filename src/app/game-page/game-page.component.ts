@@ -1,16 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlayerDTO } from '../player-dto';
 import { RestService } from '../rest.service';
 import { MatchDTO } from '../match-dto';
+import { SharedDataService } from '../shared-data.service';
 
 @Component({
   selector: 'app-game-page',
   templateUrl: './game-page.component.html',
   styleUrls: ['./game-page.component.css']
 })
-export class GamePageComponent {
+export class GamePageComponent implements OnInit{
 
-  @Input() playername: string = '';
+  playername: string = '';
   
   elements = [
     {hand: 'ROCK'},
@@ -18,7 +19,13 @@ export class GamePageComponent {
     {hand: 'SCISSORS'}
   ];
 
-  constructor(private restService: RestService){}
+  constructor(private restService: RestService, private shareddata: SharedDataService){}
+
+  ngOnInit(): void {
+    this.shareddata.nameObs.subscribe((data) => {
+      this.playername = data;
+    })
+  }
 
   onSelect(hand: string): void{
     let player: PlayerDTO = new PlayerDTO();
