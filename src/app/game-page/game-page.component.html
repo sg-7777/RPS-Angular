@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <div *ngFor="let element of elements" class="col">
-            <img src="/assets/{{element.name}}.png" alt="rock" class="img-fluid">
+            <img src="/assets/{{element.hand}}.png" alt={{element.hand}} class="img-fluid">
         </div>
     </div>
 </div>
@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div *ngFor="let element of elements" class="col">
-            <button (click)="onSelect(element.id)">{{element.name}}</button>
+                <button (click)="onSelect(element.hand)">{{element.hand}}</button>
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { gameelement } from '../game-element';
+import { PlayerDTO } from '../player-dto';
 import { RestService } from '../rest.service';
+import { MatchDTO } from '../match-dto';
 
 @Component({
   selector: 'app-game-page',
@@ -9,19 +10,25 @@ import { RestService } from '../rest.service';
 })
 export class GamePageComponent {
 
-  elements: gameelement[] = [
-    {id: 1, name: 'rock'},
-    {id: 2, name: 'paper'},
-    {id: 3, name: 'scissors'}
+  elements = [
+    {hand: 'ROCK'},
+    {hand: 'PAPER'},
+    {hand: 'SCISSORS'}
   ];
 
   constructor(private restService: RestService){}
 
-  onSelect(id: number): void{
-    console.log(id)
-      this.restService.postChoice(id).subscribe((data: number) => {
-        console.log(data);
-        
+  onSelect(hand: string): void{
+    let player: PlayerDTO = new PlayerDTO();
+    player.name = "007";
+    player.choice = hand;
+    
+    console.log("Vor dem abschicken" + player.name, player.choice);
+      this.restService.postHand(player).subscribe((data: MatchDTO) => {
+        console.log("P1 " + data.player1.name, " ", data.player1.choice);
+        console.log("P2 " + data.player2.name, " ", data.player2.choice);
+        console.log("Ergebnis " + data.winner);
+        console.log(data)
       });
   }
 

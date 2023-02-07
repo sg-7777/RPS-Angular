@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { gameelement } from './game-element';
+import { PlayerDTO } from './player-dto';
+import { MatchDTO } from './match-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +11,14 @@ import { gameelement } from './game-element';
 export class RestService {
 
   private api =  "http://localhost:8080/"
+  private httpHeader = new HttpHeaders({ 'content-type': 'application/json'} );
+  constructor(private httpClient: HttpClient) { }
 
-  constructor(private http: HttpClient) { }
+  postHand(player: PlayerDTO): Observable<MatchDTO>{
+    var path: string = "rest/play";
 
-  getHello(): Observable<number>{
-    var path: string = "rest/hello";
-    return this.http
-      .get<number>(this.api + path);
+    return this.httpClient
+      .post<MatchDTO>(this.api + path, player, {headers: this.httpHeader});
   }
 
-  postChoice(id: number): Observable<number>{
-    var path: string = "rest/playerchoice";
-    return this.http
-      .post<number>(this.api + path, JSON.stringify(id));
-  }
 }
