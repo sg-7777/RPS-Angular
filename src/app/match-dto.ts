@@ -1,7 +1,6 @@
 import { PlayerDTO } from './player-dto';
 
 export class MatchDTO{
-    player1: PlayerDTO;
-    player2: PlayerDTO;
-    winner: string;
+    playerOne: PlayerDTO;
+    playerTwo: PlayerDTO;
 }

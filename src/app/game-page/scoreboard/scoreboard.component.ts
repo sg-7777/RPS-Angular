@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { PlayerDTO } from '../../player-dto';
 
 @Component({
@@ -13,6 +13,10 @@ export class ScoreboardComponent {
 
   playerscore: number = 0;
   opponentscore: number = 0;
+
+  ngOnChanges(changes: SimpleChanges){
+    this.calcScore();
+  }
 
   calcScore(){
     if(this.player.result == "WIN"){
