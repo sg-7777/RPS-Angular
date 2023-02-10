@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ScoreboardComponent } from './game-page/scoreboard/scoreboard.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ScoreboardComponent } from './game-page/scoreboard/scoreboard.component
     GamePageComponent,
     LandingPageComponent,
     PagenotfoundComponent,
-    ScoreboardComponent
+    ScoreboardComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
