@@ -19,8 +19,8 @@
 <div class="container">
     <div class="row">
         <div *ngFor="let element of elements" class="col">
-                <button (click)="onSelect(element.hand)">{{element.hand}}</button>
+            <button (click)="onSelect(element.hand)">{{element.hand}}</button>
         </div>
     </div>
 </div>
-<app-scoreboard [player]="player" [opponent]="opponent"></app-scoreboard>
+<app-scoreboard [match]="match"></app-scoreboard>
