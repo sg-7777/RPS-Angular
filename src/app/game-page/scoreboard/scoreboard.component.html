@@ -1,44 +1,81 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1 class="text-center">
-                {{player.name}}
-            </h1>
+<div class="container-fluid border border-3 rounded mt-5">
+    <div class="container pt-3">
+        <h1 class="text-center">
+            Scoreboard
+        </h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center py-2">
+                    {{match.playerOne.name}}
+                </h1>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+                <h1 class="text-center py-2">
+                    {{match.playerTwo.name}}
+                </h1>
+            </div>
         </div>
-        <div class="col">
+
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center py-2">
+                    {{match.playerOne.choice}}
+                </h1>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+                <h1 class="text-center py-2">
+                    {{match.playerTwo.choice}}
+                </h1>
+            </div>
         </div>
-        <div class="col">
-            <h1 class="text-center">
-                {{opponent.name}}
-            </h1>
+
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center py-2">
+                    {{match.playerOne.result}}
+                </h1>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+                <h1 class="text-center py-2">
+                    {{match.playerTwo.result}}
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center py-2">
+                    {{playerscore}}
+                </h1>
+            </div>
+            <div class="col">
+                <h1 class="text-center">
+                -
+                </h1>
+            </div>
+            <div class="col">
+                <h1 class="text-center py-2">
+                    {{opponentscore}}
+                </h1>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <h1 class="text-center">
-                {{player.choice}}
-            </h1>
-        </div>
-        <div class="col">
-        </div>
-        <div class="col">
-            <h1 class="text-center">
-                {{opponent.choice}}
-            </h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h1 class="text-center">
-                {{playerscore}}
-            </h1>
-        </div>
-        <div class="col">
-        </div>
-        <div class="col">
-            <h1 class="text-center">
-                {{opponentscore}}
-            </h1>
+    <div class="container py-2">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">
+                    <button class="btn btn-dark btn-lg" (click)="saveGame()">Save this Game</button>
+                </h1>
+            </div>
         </div>
     </div>
 </div>
+
+

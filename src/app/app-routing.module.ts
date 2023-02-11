@@ -7,7 +7,7 @@ import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
   { path: 'landingpage', component: LandingPageComponent },
-  { path: 'history/:id', component: HistoryComponent },
+  { path: 'history/:gameid', component: HistoryComponent },
   { path: 'game', component: GamePageComponent },
   { path: '', redirectTo: '/landingpage', pathMatch: 'full' },
   { path: '**', component: PagenotfoundComponent }

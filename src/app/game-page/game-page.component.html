@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container pt-3 mb-4">
     <div class="row">
         <div class="col">
             <h1 class="text-center">
-                {{playername}} Choose
+                {{playername}} pick {{match.playerOne.choice}}
             </h1>
         </div>
     </div>
@@ -10,17 +10,27 @@
 
 <div class="container">
     <div class="row">
-        <div *ngFor="let element of elements" class="col">
-            <img src="/assets/{{element.hand}}.png" alt={{element.hand}} class="img-fluid">
+        <div *ngFor="let element of elements" class="col-4 text-center">
+            <button type="button" class="btn" placement="top" ngbTooltip="{{element.tip}}">
+                <img src="/assets/{{element.hand}}.png" (click)="onSelect(element.hand)" alt={{element.hand}} class="img-fluid">
+            </button>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div *ngFor="let element of elements" class="col">
-            <button (click)="onSelect(element.hand)">{{element.hand}}</button>
-        </div>
-    </div>
-</div>
 <app-scoreboard [match]="match"></app-scoreboard>
+
+<div class="container-fluid m-3" >
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">
+                <button 
+                    routerLink="/.." 
+                    type="button" 
+                    class="btn btn-outline-dark btn-lg">
+                    Go Back!
+                </button>
+            </h1>
+        </div>
+    </div>  
+</div>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { SharedDataService } from '../shared-data.service';
+import { RestService } from '../rest.service';
+import { GameDTO } from '../DTOs/game-dto';
 
 @Component({
   selector: 'app-landing-page',
@@ -9,10 +11,21 @@ import { SharedDataService } from '../shared-data.service';
 
 export class LandingPageComponent {
   playername: string = '';
+  game: GameDTO;
+  gameid: number;
 
-  constructor(private shareddata: SharedDataService){}
+  constructor(private shareddata: SharedDataService, private restService: RestService){}
 
   onClick(){
-    this.shareddata.createNameObservable(this.playername);
+    this.shareddata.name = this.playername;
+  }
+
+  loadgame(){
+    this.restService.loadGame().subscribe((data: GameDTO) => {
+
+
+      
+    });
+
   }
 }

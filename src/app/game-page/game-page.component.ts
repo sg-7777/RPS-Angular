@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerDTO } from '../player-dto';
+import { PlayerDTO } from '../DTOs/player-dto';
 import { RestService } from '../rest.service';
-import { MatchDTO } from '../match-dto';
+import { MatchDTO } from '../DTOs/match-dto';
 import { SharedDataService } from '../shared-data.service';
+import { Elements } from '../elements';
+import { GameDTO } from '../DTOs/game-dto';
 
 @Component({
   selector: 'app-game-page',
@@ -10,40 +12,38 @@ import { SharedDataService } from '../shared-data.service';
   styleUrls: ['./game-page.component.css']
 })
 export class GamePageComponent implements OnInit{
+  elements: any;
 
   playername: string = '';
-
-  player: PlayerDTO = new PlayerDTO();
-  opponent: PlayerDTO = new PlayerDTO();
+  // obj gets lost when in ngOnInit init
   match: MatchDTO = new MatchDTO();
-
-  playerscore: number = 0;
-  opponentscore: number = 0;
-  
-  elements = [
-    {hand: 'ROCK'},
-    {hand: 'PAPER'},
-    {hand: 'SCISSORS'}
-  ];
 
   constructor(private restService: RestService, private shareddata: SharedDataService){}
 
   ngOnInit(): void {
-    this.shareddata.nameObs.subscribe((data) => {
-      this.playername = data;
-    })
-   
-    this.player.name = this.playername
+
+    this.elements = Elements.ELEMENTS;
+
+    this.playername = this.shareddata.name;
+    let player = new PlayerDTO(this.playername, "Your Hand");
+    let opponent = new PlayerDTO("To Be Determined", "Opponent Hand");
+    this.match.playerOne = player;
+    this.match.playerTwo = opponent;
+
   }
 
   onSelect(hand: string): void{
-    this.player.choice = hand;
+    this.match.playerOne.choice = hand;
     
-    this.restService.postHand(this.player).subscribe((data: MatchDTO) => {
-      console.log(data);
-      this.player = data.playerOne;
-      this.opponent = data.playerTwo;
+    this.restService.postHand(this.match.playerOne).subscribe((data: MatchDTO) => {
+      // Must create new obj otherwise just an object like MatchDTO gets transfered but not from type MatchDTO
+      this.match = new MatchDTO();
+      this.match.playerOne = new PlayerDTO(data.playerOne.name, data.playerOne.choice);
+      this.match.playerOne.result = data.playerOne.result;
+      this.match.playerTwo = new PlayerDTO(data.playerTwo.name, data.playerTwo.choice);
+      this.match.playerTwo.result = data.playerTwo.result;
     });
   }
-  
+
+
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { GameDTO } from './DTOs/game-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +8,11 @@ import { Observable } from 'rxjs';
 
 // Service for sharing data between the components
 export class SharedDataService {
-  nameObs: Observable<string>;
 
-  createNameObservable(name: string): Observable<string>{
-    this.nameObs = new Observable<string>((subscriber) => {
-      subscriber.next(name);
-    });
-    return this.nameObs;
-  }
-  constructor() { }
+  game: GameDTO;
+
+  name: string;
+
+  constructor() { } 
+
 }
