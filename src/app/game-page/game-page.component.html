@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="row">
-        <div *ngFor="let element of elements" class="col-4 text-center">
+        <div *ngFor="let element of elements" class="col-sm-4 text-center">
             <button type="button" class="btn" placement="top" ngbTooltip="{{element.tip}}">
                 <img src="/assets/{{element.hand}}.png" (click)="onSelect(element.hand)" alt={{element.hand}} class="img-fluid">
             </button>

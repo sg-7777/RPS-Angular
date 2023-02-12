@@ -3,6 +3,8 @@ import { GameDTO } from '../DTOs/game-dto';
 import { SharedDataService } from '../shared-data.service';
 import { MatchDTO } from '../DTOs/match-dto';
 import { PlayerDTO } from '../DTOs/player-dto';
+import { ActivatedRoute } from '@angular/router';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-history',
@@ -13,23 +15,19 @@ export class HistoryComponent implements OnInit{
 
   game: GameDTO;
 
-  constructor(private sharedDataService: SharedDataService){}
+  constructor(private restService: RestService,
+              private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.game = new GameDTO();
-    this.game.gameid = 1;
-    let p1 = new PlayerDTO("Test", "ROCK");
-    p1.result = "DRAW";
-    for(let i = 0; i < 3; i++){
-      let m = new MatchDTO();
-      m.playerOne = p1;
-      m.playerTwo = p1;
-      this.game.matches.push(m);
-    }
-    this.game.playerOneScore = 1;
-    this.game.playerTwoScore = 1;
+    const gameid = Number(this.route.snapshot.paramMap.get('gameid'));
 
-    console.log(this.game)
+    this.restService.loadGame(gameid).subscribe((data: GameDTO) => {
+      console.log(data)
+
+      this.game = data;
+    });
+
+    
   }
 
 }

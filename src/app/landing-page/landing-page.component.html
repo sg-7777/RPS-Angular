@@ -11,11 +11,16 @@
 <div class="container-fluid p-2">
     <form>
         <div class="row">
-            <div class="col-3"></div>
-                <div class="col-6">
-                    <input type="text" [(ngModel)]="playername" name="name" class="form-control" placeholder="Insert Player Name" required>
+            <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <input type="text" 
+                    [(ngModel)]="playername" 
+                    name="name" 
+                    class="form-control" 
+                    placeholder="Insert Player Name" 
+                    required>
                 </div>
-            <div class="col-9"></div>
+            <div class="col-sm-4"></div>
         </div>
     </form>
 </div>
@@ -36,15 +41,31 @@
     </div>  
 </div>
 
+<div class="container-fluid p-2">
+    <form>
+        <div class="row">
+            <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <input type="number" 
+                    [(ngModel)]="gameid" 
+                    name="name" 
+                    class="form-control" 
+                    placeholder="Insert GameID" 
+                    required>
+                </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </form>
+</div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col">
             <h1 class="text-center">
                 <button 
                     [routerLink]="['/history/', gameid]"
-                    (click)=loadgame() 
                     type="button" 
-                    [class.disabled]="playername"
+                    [class.disabled]="!gameid"
                     class="btn btn-dark btn-lg">
                     Load Last Game!
                 </button>

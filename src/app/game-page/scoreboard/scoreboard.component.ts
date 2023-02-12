@@ -14,6 +14,7 @@ export class ScoreboardComponent{
   //Can't create obj in ngOnInit??
   game: GameDTO = new GameDTO();;
 
+  matchid: number = 0;
   playerscore: number = 0;
   opponentscore: number = 0;
 
@@ -21,8 +22,11 @@ export class ScoreboardComponent{
 
 
   ngOnChanges(changes: SimpleChanges){
-    this.calcScore();  
+    this.calcScore();
+
+    this.match.matchid = this.matchid.toString();
     this.game.matches.push(this.match);
+    this.matchid++;
   }
 
   calcScore(){
@@ -35,13 +39,19 @@ export class ScoreboardComponent{
   }
 
   saveGame(){
-    if(this.game.matches[0].playerTwo.choice == "Opponent Hand"){
-      this.game.matches = this.game.matches.slice(1, this.game.matches.length - 1);
+    if(this.game.matches[0].matchid == "0"){
+      this.game.matches = this.game.matches.slice(1, this.game.matches.length);
     }
+
+    this.game.gameid = this.getRandomInt(9999).toString();
 
     this.game.playerOneScore = this.playerscore;
     this.game.playerTwoScore = this.opponentscore;
 
     this.restService.saveGame(this.game).subscribe(data => console.log(data));
+  }
+
+  getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
   }
 }

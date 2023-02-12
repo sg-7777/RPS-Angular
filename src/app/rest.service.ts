@@ -22,7 +22,6 @@ export class RestService {
   }
 
   saveGame(gameDTO: GameDTO): Observable<boolean>{
-    console.log(gameDTO)
     return this.httpClient
       .post<boolean>(Constants.API_URL + Constants.SAVE, 
                       gameDTO, 
@@ -30,18 +29,11 @@ export class RestService {
   }
 
   // Why does Observable be of type <any> so I can use it correctly?
-  loadGame(): Observable<GameDTO>{
+  loadGame(gameid: number): Observable<GameDTO>{
     return this.httpClient
-      .get<GameDTO>(Constants.API_URL + Constants.LOAD)
-        .pipe(map((data: GameDTO) => {
-              let game = new GameDTO();
-              game.gameid = data.gameid;
-              game.matches = data.matches;
-              game.playerOneScore = data.playerOneScore;
-              game.playerTwoScore = data.playerTwoScore
-              return game;
-            }
-          )
-        )
+      .post<GameDTO>(Constants.API_URL + Constants.LOAD,
+                      gameid,
+                      {headers: Constants.HTTP_HEADER});
+        
   }
 }
