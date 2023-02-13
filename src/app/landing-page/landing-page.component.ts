@@ -10,7 +10,9 @@ import { MatchDTO } from '../DTOs/match-dto';
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css']
 })
-
+/**
+ * This class controls the flow of the user input to the other directives
+ */
 export class LandingPageComponent {
   playername: string = '';
   gameid: number;

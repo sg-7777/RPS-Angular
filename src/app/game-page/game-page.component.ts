@@ -11,6 +11,9 @@ import { GameDTO } from '../DTOs/game-dto';
   templateUrl: './game-page.component.html',
   styleUrls: ['./game-page.component.css']
 })
+/**
+ * Component for letting the user pick a hand and do a rest call to backend
+ */
 export class GamePageComponent implements OnInit{
   elements: any;
 

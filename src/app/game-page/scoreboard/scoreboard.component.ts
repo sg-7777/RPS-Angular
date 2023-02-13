@@ -8,6 +8,9 @@ import { MatchDTO } from 'src/app/DTOs/match-dto';
   templateUrl: './scoreboard.component.html',
   styleUrls: ['./scoreboard.component.css']
 })
+/**
+ * This class handles the scoreboard. It creates GameDTO instances. It is the central managment system for the game data
+ */
 export class ScoreboardComponent{
 
   @Input() match: MatchDTO

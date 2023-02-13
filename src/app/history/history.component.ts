@@ -11,6 +11,9 @@ import { RestService } from '../rest.service';
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css']
 })
+/**
+ * This class is for Database data representation
+ */
 export class HistoryComponent implements OnInit{
 
   game: GameDTO;
