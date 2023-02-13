@@ -1,3 +1,4 @@
+// The possible options in the game plus their strength and weakness
 export class Elements{
     public static readonly ELEMENTS = [
         {hand: 'ROCK',

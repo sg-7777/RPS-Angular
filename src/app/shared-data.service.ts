@@ -9,8 +9,6 @@ import { GameDTO } from './DTOs/game-dto';
 // Service for sharing data between the components
 export class SharedDataService {
 
-  game: GameDTO;
-
   name: string;
 
   constructor() { } 
