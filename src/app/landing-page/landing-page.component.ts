@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedDataService } from '../shared-data.service';
-import { RestService } from '../rest.service';
-import { GameDTO } from '../DTOs/game-dto';
-import { PlayerDTO } from '../DTOs/player-dto';
-import { MatchDTO } from '../DTOs/match-dto';
+import { AuthGuardService } from '../auth-guard.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -12,14 +9,21 @@ import { MatchDTO } from '../DTOs/match-dto';
 })
 /**
  * This class controls the flow of the user input to the other directives
+ * It also has a guard for not authorized input
  */
 export class LandingPageComponent {
   playername: string = '';
   gameid: number;
 
-  constructor(private shareddata: SharedDataService, private restService: RestService){}
+  constructor(private shareddata: SharedDataService, 
+              private authGuard: AuthGuardService){}
 
   onClick(){
     this.shareddata.name = this.playername;
+    this.authGuard.isLoggedIn = true;
+  }
+
+  goToHistory(){
+    this.authGuard.isLoggedIn = true;
   }
 }

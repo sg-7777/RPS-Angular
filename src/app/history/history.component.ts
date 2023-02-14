@@ -5,6 +5,7 @@ import { MatchDTO } from '../DTOs/match-dto';
 import { PlayerDTO } from '../DTOs/player-dto';
 import { ActivatedRoute } from '@angular/router';
 import { RestService } from '../rest.service';
+import { AuthGuardService } from '../auth-guard.service';
 
 @Component({
   selector: 'app-history',
@@ -16,10 +17,11 @@ import { RestService } from '../rest.service';
  */
 export class HistoryComponent implements OnInit{
 
-  game: GameDTO;
+  game: GameDTO = new GameDTO();
 
   constructor(private restService: RestService,
-              private route: ActivatedRoute){}
+              private route: ActivatedRoute,
+              private authGuard: AuthGuardService){}
 
   ngOnInit(): void {
     const gameid = Number(this.route.snapshot.paramMap.get('gameid'));
@@ -30,7 +32,7 @@ export class HistoryComponent implements OnInit{
       this.game = data;
     });
 
-    
+    this.authGuard.isLoggedIn = this.game.gameid == "";
   }
 
 }

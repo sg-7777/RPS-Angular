@@ -5,6 +5,7 @@ import { MatchDTO } from '../DTOs/match-dto';
 import { SharedDataService } from '../shared-data.service';
 import { Elements } from '../elements';
 import { GameDTO } from '../DTOs/game-dto';
+import { AuthGuardService } from '../auth-guard.service';
 
 @Component({
   selector: 'app-game-page',
@@ -21,13 +22,17 @@ export class GamePageComponent implements OnInit{
   // obj gets lost when in ngOnInit init
   match: MatchDTO = new MatchDTO();
 
-  constructor(private restService: RestService, private shareddata: SharedDataService){}
+  constructor(private restService: RestService,
+              private shareddata: SharedDataService,
+              private authGuard: AuthGuardService){}
 
   ngOnInit(): void {
-
-    this.elements = Elements.ELEMENTS;
+    console.log(this.shareddata.name.length)
+    this.authGuard.isLoggedIn = this.shareddata.name.length == 0;
 
     this.playername = this.shareddata.name;
+    this.elements = Elements.ELEMENTS;
+
     let player = new PlayerDTO(this.playername, "Your Hand");
     let opponent = new PlayerDTO("To Be Determined", "Opponent Hand");
     this.match.playerOne = player;

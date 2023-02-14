@@ -63,6 +63,7 @@
         <div class="col">
             <h1 class="text-center">
                 <button 
+                    (click)="goToHistory()"
                     [routerLink]="['/history/', gameid]"
                     type="button" 
                     [class.disabled]="!gameid"

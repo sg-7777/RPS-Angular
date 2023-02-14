@@ -3,7 +3,7 @@ import { HttpHeaders } from '@angular/common/http';
 
 @Injectable() 
 export class Constants{
-    public static readonly API_URL: string = "http://localhost:8080/";
+    public static readonly API_URL: string = "http://localhost:8181/";
     public static readonly PLAY: string = "rest/play";
     public static readonly LOAD: string = "rest/loadgame";
     public static readonly SAVE: string = "rest/savegame";
