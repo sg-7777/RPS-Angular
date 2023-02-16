@@ -24,6 +24,6 @@ export class LandingPageComponent {
   }
 
   goToHistory(){
-    this.authGuard.isLoggedIn = true;
+    this.authGuard.isLoggedIn = this.gameid.toString() != "";
   }
 }

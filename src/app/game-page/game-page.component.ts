@@ -27,7 +27,6 @@ export class GamePageComponent implements OnInit{
               private authGuard: AuthGuardService){}
 
   ngOnInit(): void {
-    console.log(this.shareddata.name.length)
     this.authGuard.isLoggedIn = this.shareddata.name.length == 0;
 
     this.playername = this.shareddata.name;
